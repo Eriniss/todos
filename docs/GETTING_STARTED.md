@@ -1,4 +1,4 @@
-# Getting Started with Testbox
+# Testbox 시작하기
 
 ## 빠른 시작 가이드
 
@@ -125,7 +125,7 @@ curl http://localhost:3000/api/todos
 # Todo 생성
 curl -X POST http://localhost:3000/api/todos \
   -H "Content-Type: application/json" \
-  -d '{"title":"Learn Go","content":"Study Fiber framework"}'
+  -d '{"title":"Go 학습하기","content":"Fiber 프레임워크 공부"}'
 
 # Todo 조회 (ID 필요)
 curl http://localhost:3000/api/todos/{id}
@@ -133,7 +133,7 @@ curl http://localhost:3000/api/todos/{id}
 # Todo 수정
 curl -X PUT http://localhost:3000/api/todos/{id} \
   -H "Content-Type: application/json" \
-  -d '{"title":"Learn Go","content":"Completed!","completed":true}'
+  -d '{"title":"Go 학습하기","content":"완료!","completed":true}'
 
 # Todo 삭제
 curl -X DELETE http://localhost:3000/api/todos/{id}
@@ -248,23 +248,23 @@ make up
 docker-compose logs -f backend
 
 # Todo 생성 시
-✓ Created todo: {id}
-✓ Cache SET: todo:{id}
+✓ Todo 생성 완료: {id}
+✓ 캐시 저장: todo:{id}
 
-# Todo 조회 시 (첫 번째 - Cache Miss)
-Cache MISS: todo:{id} - fetching from DB
-✓ Cache SET: todo:{id}
+# Todo 조회 시 (첫 번째 - 캐시 미스)
+캐시 미스: todo:{id} - DB에서 조회 중
+✓ 캐시 저장: todo:{id}
 
-# Todo 조회 시 (두 번째 - Cache Hit)
-✓ Cache HIT: todo:{id}
+# Todo 조회 시 (두 번째 - 캐시 히트)
+✓ 캐시 히트: todo:{id}
 
 # Todo 수정 시
-✓ Updated todo: {id}
-✓ Cache SET: todo:{id}
+✓ Todo 업데이트 완료: {id}
+✓ 캐시 업데이트: todo:{id}
 
 # Todo 삭제 시
-✓ Deleted todo: {id}
-✓ Cache DELETE: todo:{id}
+✓ Todo 삭제 완료: {id}
+✓ 캐시 삭제: todo:{id}
 ```
 
 ## 다음 단계
