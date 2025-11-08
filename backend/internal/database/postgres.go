@@ -31,7 +31,7 @@ func NewPostgresDB(cfg *config.Config) (*PostgresDB, error) {
 	log.Println("✓ Connected to PostgreSQL")
 
 	// Auto-migrate models
-	if err := db.AutoMigrate(&models.Todo{}); err != nil {
+	if err := db.AutoMigrate(&models.Todo{}, &models.BlogPost{}); err != nil {
 		return nil, fmt.Errorf("failed to migrate models: %w", err)
 	}
 

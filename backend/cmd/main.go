@@ -59,6 +59,10 @@ func main() {
 	todoService := service.NewTodoService(todoRepo, redisCache, rabbitMQ)
 	todoHandler := api.NewTodoHandler(todoService)
 
+	blogRepo := repository.NewBlogRepository(postgresDB.DB)
+	blogService := service.NewBlogService(blogRepo, redisCache, rabbitMQ)
+	blogHandler := api.NewBlogHandler(blogService)
+
 	// Fiber 앱 생성
 	app := fiber.New(fiber.Config{
 		AppName: "Testbox Backend v1.0",
@@ -84,7 +88,7 @@ func main() {
 	}))
 
 	// 라우트 설정
-	api.SetupRoutes(app, todoHandler)
+	api.SetupRoutes(app, todoHandler, blogHandler)
 
 	// Graceful Shutdown 설정
 	c := make(chan os.Signal, 1)
